@@ -33,9 +33,9 @@ Extension for tracking external Referrers coming from socials medai or marketpla
 ## Configuration
 - In Back Office:
 
--To enable tracking customer registration, go to Stores => Configuration => ATOUATI Tools => Customer Registration and select Yes then save
--To enable tracking customer when they passe a new order, gO to Stores => Configuration => ATOUATI Tools => Order Success then select Yes then save
--If you want to exclude domains then, GO to Stores => Configuration => ATOUATI Tools => Exclude External Domains and add some domains then save
+-To enable tracking customer registration, go to Stores => Configuration => ATOUATI Tools => Customer Registration and select Yes then save.
+-To enable tracking customer when they passe a new order, go to Stores => Configuration => ATOUATI Tools => Order Success then select Yes then save.
+-If you want to exclude domains then, go to Stores => Configuration => ATOUATI Tools => Exclude External Domains and add some domains then save.
 
 - Using CLI:
 -Enable tracking customers when they register in the website 
