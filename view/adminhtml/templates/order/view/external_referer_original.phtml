@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright (c) 2019
+ * MIT License
+ * Module AnassTouatiCoder_ReferrerTracker
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+use AnassTouatiCoder\ReferrerTracker\Block\Adminhtml\Order\View\ExternalRefererOrigin;
+/** @var ExternalRefererOrigin $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+<?php if ($block->getExternalRefererOriginValue()): ?>
+    <div class="admin__page-section-title">
+        <span class="title"><?= $escaper->escapeHtml(__('Origin')) ?></span>
+    </div>
+    <div class="admin__page-section-item-content">
+        <div class="order-payment-method-title"><?= $escaper->escapeJs($block->getExternalRefererOriginValue()) ?></div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright (c) 2019
+ * MIT License
+ * Module AnassTouatiCoder_ReferrerTracker
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sales_order">
+        <column name="atouati_external_origin" nullable="true" xsi:type="varchar" comment="AnassTouatiCoder External Origin"
+                length="255"/>
+    </table>
+    <table name="sales_order_grid">
+        <column name="atouati_external_origin" nullable="true" xsi:type="varchar" comment="AnassTouatiCoder External Origin"
+                length="255"/>
+    </table>
+</schema>

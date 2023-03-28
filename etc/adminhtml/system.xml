@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2019
+ * MIT License
+ * Module AnassTouatiCoder_ReferrerTracker
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="anasstouaticoder_trackreferrerorigin" translate="label" type="text" sortOrder="100"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Referrer Tracker</label>
+            <tab>anass_Touati_coder</tab>
+            <resource>AnassTouatiCoder_ReferrerTracker::anasstouaticoder_reeferrertracker</resource>
+            <group id="general" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+                <field id="registration" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="100"
+                       translate="label" type="select">
+                    <label>Customer Registration</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable tracking origin url in Customer registration</comment>
+                </field>
+                <field id="order" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="200" translate="label"
+                       type="select">
+                    <label>Order Success</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable tracking origin url in order Success</comment>
+                </field>
+            </group>
+            <group id="restriction" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Restrictions</label>
+                <field id="exclude_external_domains" translate="label,comment" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Exclude External Domains</label>
+                    <frontend_model>AnassTouatiCoder\ReferrerTracker\Block\Adminhtml\Form\Field\ExcludeExternalDomainList</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment><![CDATA[
+                    <p>To exclude unwanted external domains</p>
+                        <p>add rows to this table each row must contain a domain name ex:</p>
+                        <ul>
+                            <li>test.com</li>
+                            <li>bestbetatest.org</li>
+                        </ul>
+                        <p>There are two ways to configurate this field:</p>
+                        <ol>
+                        <li>Fill the table above then click Save Config button</li>
+                        <li>Use export, and import Buttons, <span style="color:red;">Note that</span>: if want to change existing list
+                         items you should export the existing list as CSV file then modify it finally import the CSV
+                         file</li>
+                        </ol>
+                        ]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

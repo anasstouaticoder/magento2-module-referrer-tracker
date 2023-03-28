@@ -1,0 +1,52 @@
+<?php
+/**
+ * Copyright (c) 2019
+ * MIT License
+ * Module AnassTouatiCoder_ReferrerTracker
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+
+use Magento\Framework\Escaper;
+use Magento\Framework\UrlInterface;
+use AnassTouatiCoder\ReferrerTracker\Block\ExternalRefererTracker;
+
+/** @var Escaper $escaper */
+/** @var ExternalRefererTracker $block */
+
+$baseUrl = $block->getBaseUrl(UrlInterface::URL_TYPE_WEB,true);
+$baseUrl= parse_url($baseUrl);
+$currentDomain = $baseUrl['host'];
+?>
+<?php if($block->canRetrieveOriginReferer()) : ?>
+    <script>
+        if (document.referrer) {
+            let currentDomain = '<?= /* @noEscape */ $currentDomain ?>',
+                refererURL = (new URL(document.referrer));
+            refererDomain = refererURL.hostname;
+            if (currentDomain !== refererDomain) {
+                saveExternalDomain(refererDomain);
+            }
+            function saveExternalDomain(originReferer) {
+                fetch('<?= $escaper->escapeUrl($block->getUpdateExternalRefererURL()) ?>', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: new URLSearchParams({
+                            origin_referer : originReferer
+                        }
+                    ),
+                })
+                    .then(response => {
+                        if (response.status !== 200) {
+                            throw new Error("Error");
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
+        }
+    </script>
+<?php endif; ?>

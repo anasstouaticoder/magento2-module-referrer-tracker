@@ -1,0 +1,12 @@
+{
+    "sales_order": {
+        "column": {
+            "atouati_external_origin": true
+        }
+    },
+    "sales_order_grid": {
+        "column": {
+            "atouati_external_origin": true
+        }
+    }
+}

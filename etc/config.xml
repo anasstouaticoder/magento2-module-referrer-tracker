@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+    <default>
+        <atouati_data_config_domain>
+            <headers><![CDATA[Domain name]]></headers>
+            <table_config><![CDATA[anasstouaticoder_trackreferrerorigin/restriction/exclude_external_domains]]></table_config>
+            <table_fields>
+                <domain>text</domain>
+            </table_fields>
+        </atouati_data_config_domain>
+    </default>
+</config>

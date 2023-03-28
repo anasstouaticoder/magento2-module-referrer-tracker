@@ -1,0 +1,31 @@
+{
+    "name": "anasstouaticoder/magento2-module-referrer-tracker",
+    "description": "Extension for tracking external Referrers coming from socials media and marketplaces",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anass TOUATI",
+            "email": "anass1touati@gmail.com",
+            "homepage": "https://www.linkedin.com/in/anass-touati-9a3b028b/",
+            "role": "Leader"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4.0||8.1.0||8.2",
+        "magento/framework": "103.0.*",
+        "magento/module-sales": "103.0.*",
+        "magento/module-customer": "103.0.*",
+        "anasstouaticoder/magento2-module-base": "^1.1"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "AnassTouatiCoder\\ReferrerTracker\\": ""
+        }
+    }
+}
