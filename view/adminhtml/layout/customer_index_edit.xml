@@ -7,10 +7,12 @@
  * Author Anass TOUATI anass1touati@gmail.com
  */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="customer_edit_tab_view">
-            <block class="AnassTouatiCoder\ReferrerTracker\Block\Adminhtml\Customer\View\ExternalRefererOrigin"  template="AnassTouatiCoder_ReferrerTracker::customer/edit/external_referer_original.phtml" name="external_referer_original" after="personal_info"/>
+            <block class="AnassTouatiCoder\ReferrerTracker\Block\Adminhtml\Customer\View\ExternalRefererOrigin"
+                   template="AnassTouatiCoder_ReferrerTracker::customer/edit/external_referer_original.phtml" name="external_referer_original" after="personal_info"/>
         </referenceBlock>
     </body>
 </page>

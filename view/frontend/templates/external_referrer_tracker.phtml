@@ -1,0 +1,60 @@
+<?php
+/**
+ * Copyright (c) 2019
+ * MIT License
+ * Module AnassTouatiCoder_ReferrerTracker
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+
+use AnassTouatiCoder\ReferrerTracker\Block\ExternalReferrerTracker;
+use Magento\Framework\Escaper;
+use Magento\Framework\UrlInterface;
+
+/** @var Escaper $escaper */
+/** @var ExternalReferrerTracker $block */
+
+$baseUrl = $block->getBaseUrl(UrlInterface::URL_TYPE_WEB, true);
+$baseUrl= parse_url($baseUrl);
+$currentDomain = $baseUrl['host'];
+?>
+<?php if ($block->canRetrieveOriginReferrer()) : ?>
+    <script>
+        const cookies = document.cookie.split(';').map(cookie => cookie.trim()),
+            keyValueCookie = cookies.find(cookie => cookie.startsWith('atouati_referrer='));
+        const [, referrerFromCookie] = keyValueCookie ? keyValueCookie.split('=') : [];
+
+        if (document.referrer && document.referrer !== referrerFromCookie) {
+            console.log('we got referrer' , document.referrer);
+            let currentDomain = '<?= /* @noEscape */ $currentDomain ?>',
+                referrerURL = (new URL(document.referrer));
+            referrerDomain = referrerURL.hostname;
+            if (currentDomain !== referrerDomain) {
+                saveExternalDomain(referrerDomain);
+            }
+            function saveExternalDomain(originReferrer) {
+                fetch('<?= $escaper->escapeUrl($block->getUpdateExternalReferrerURL()) ?>', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: new URLSearchParams({
+                            origin_referrer : originReferrer
+                        }
+                    ),
+                })
+                    .then(response => {
+                        if (response.status !== 200) {
+                            throw new Error("Error");
+                        } else {
+                            document.cookie = `atouati_referrer=${originReferrer}; SameSite=Strict`;
+                            console.log('referrer saved in localstorage' , document.referrer);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
+        }
+    </script>
+<?php endif; ?>

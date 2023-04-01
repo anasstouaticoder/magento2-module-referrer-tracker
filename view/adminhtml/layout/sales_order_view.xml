@@ -11,7 +11,8 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="order_additional_info">
-            <block class="AnassTouatiCoder\ReferrerTracker\Block\Adminhtml\Order\View\ExternalRefererOrigin" name="external_referer_original" template="order/view/external_referer_original.phtml"/>
+            <block class="AnassTouatiCoder\ReferrerTracker\Block\Adminhtml\Order\View\ExternalRefererOrigin"
+                   name="external_referer_original" template="order/view/external_referer_original.phtml"/>
         </referenceBlock>
     </body>
 </page>

@@ -16,18 +16,19 @@ class ExternalRefererOrigin extends AbstractOrder
     /**
      * @var string
      */
-    protected $externalRefererOriginValue;
+    protected $externalReferrerOriginValue;
 
     /**
+     * Get attribute value
      * @return mixed|null
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getExternalRefererOriginValue()
+    public function getExternalReferrerOriginValue()
     {
-        if (is_null($this->externalRefererOriginValue)) {
-            $this->externalRefererOriginValue = $this->getOrder()->getData('atouati_external_origin');
+        if ($this->externalReferrerOriginValue === null) {
+            $this->externalReferrerOriginValue = $this->getOrder()->getData('atouati_external_origin');
         }
 
-        return $this->externalRefererOriginValue;
+        return $this->externalReferrerOriginValue;
     }
 }

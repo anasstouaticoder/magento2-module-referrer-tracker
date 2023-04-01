@@ -9,11 +9,11 @@ use AnassTouatiCoder\ReferrerTracker\Block\Adminhtml\Order\View\ExternalRefererO
 /** @var ExternalRefererOrigin $block */
 /** @var \Magento\Framework\Escaper $escaper */
 ?>
-<?php if ($block->getExternalRefererOriginValue()): ?>
+<?php if ($block->getExternalReferrerOriginValue()): ?>
     <div class="admin__page-section-title">
         <span class="title"><?= $escaper->escapeHtml(__('Origin')) ?></span>
     </div>
     <div class="admin__page-section-item-content">
-        <div class="order-payment-method-title"><?= $escaper->escapeJs($block->getExternalRefererOriginValue()) ?></div>
+        <div class="order-payment-method-title"><?= $escaper->escapeHtml($block->getExternalReferrerOriginValue()) ?></div>
     </div>
 <?php endif; ?>

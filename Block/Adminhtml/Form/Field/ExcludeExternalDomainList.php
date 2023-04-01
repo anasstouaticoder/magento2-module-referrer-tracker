@@ -13,6 +13,9 @@ use AnassTouatiCoder\Base\Block\Adminhtml\Form\FieldArray;
 
 class ExcludeExternalDomainList extends FieldArray
 {
+    /**
+     * @var string
+     */
     protected $dataConfig = 'atouati_data_config_domain';
     /**
      * Prepare rendering the new field by adding all the needed columns
@@ -25,10 +28,5 @@ class ExcludeExternalDomainList extends FieldArray
         ]);
         $this->_addAfter = false;
         $this->_addButtonLabel = __('Add New Domain Name');
-    }
-
-    protected function getHeaders(): array
-    {
-        return ['Domain Name'];
     }
 }

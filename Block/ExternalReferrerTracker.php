@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace AnassTouatiCoder\ReferrerTracker\Block;
 
-use AnassTouatiCoder\ReferrerTracker\Helper\Data;
+use AnassTouatiCoder\ReferrerTracker\Model\Config;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
-class ExternalRefererTracker extends Template
+class ExternalReferrerTracker extends Template
 {
     /**
      *  We are restricting referer url tracking for specific pages example product, category cart ...
      */
-    const ALLOWED_FULL_ACTION_NAME_LIST =  [
+    public const ALLOWED_FULL_ACTION_NAME_LIST =  [
         'catalog_product_view', // Product Page
         'catalog_category_view', // Category Page
         'cms_index_index', // Home page
@@ -28,16 +28,16 @@ class ExternalRefererTracker extends Template
     ];
 
     /**
-     * @var Data
+     * @var Config
      */
-    private Data $helper;
+    private Config $helper;
 
     /**
      * @param Context $context
-     * @param Data $helper
+     * @param Config $helper
      * @param array $data
      */
-    public function __construct(Context $context, Data $helper, array $data = [])
+    public function __construct(Context $context, Config $helper, array $data = [])
     {
         $this->helper = $helper;
         parent::__construct($context, $data);
@@ -48,9 +48,9 @@ class ExternalRefererTracker extends Template
      *
      * @return string
      */
-    public function getUpdateExternalRefererURL(): string
+    public function getUpdateExternalReferrerURL(): string
     {
-        return $this->getUrl('externalreferer/index/index');
+        return $this->getUrl('externalreferrer/index/index');
     }
 
     /**
@@ -58,7 +58,7 @@ class ExternalRefererTracker extends Template
      *
      * @return bool
      */
-    public function canRetrieveOriginReferer(): bool
+    public function canRetrieveOriginReferrer(): bool
     {
         return in_array($this->getRequest()->getFullActionName(), self::ALLOWED_FULL_ACTION_NAME_LIST) &&
             ($this->helper->getIsRegistrationEnabled() || $this->helper->getIsOrderEnabled());

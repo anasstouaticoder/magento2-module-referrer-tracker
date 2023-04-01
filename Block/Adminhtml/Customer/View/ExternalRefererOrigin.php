@@ -16,20 +16,22 @@ class ExternalRefererOrigin extends PersonalInfo
     /**
      * @var string
      */
-    protected $externalRefererOriginValue;
+    protected $externalReferrerOriginValue;
 
     /**
+     * Get attribute value
+     *
      * @return mixed|null
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getExternalRefererOriginValue()
+    public function getExternalReferrerOriginValue()
     {
-        if (is_null($this->externalRefererOriginValue)) {
+        if ($this->externalReferrerOriginValue === null) {
             $attribute = $this->getCustomer()->getCustomAttribute('atouati_external_origin');
-            $this->externalRefererOriginValue = $attribute ?
+            $this->externalReferrerOriginValue = $attribute ?
                 $attribute->getValue() : false;
         }
 
-        return $this->externalRefererOriginValue;
+        return $this->externalReferrerOriginValue;
     }
 }

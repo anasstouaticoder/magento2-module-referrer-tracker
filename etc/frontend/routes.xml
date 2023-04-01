@@ -11,7 +11,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route frontName="externalreferer" id="externalreferer">
+        <route frontName="externalreferrer" id="externalreferrer">
             <module name="AnassTouatiCoder_ReferrerTracker"/>
         </route>
     </router>

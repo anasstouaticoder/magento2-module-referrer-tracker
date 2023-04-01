@@ -11,8 +11,8 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="head.additional">
-            <block class="AnassTouatiCoder\ReferrerTracker\Block\ExternalRefererTracker" name="external_refere_tracker"
-                   template="AnassTouatiCoder_ReferrerTracker::external_referer_tracker.phtml"/>
+            <block class="AnassTouatiCoder\ReferrerTracker\Block\ExternalReferrerTracker" name="external_referrer_tracker"
+                   template="AnassTouatiCoder_ReferrerTracker::external_referrer_tracker.phtml"/>
         </referenceBlock>
     </body>
 </page>

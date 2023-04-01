@@ -9,13 +9,13 @@ declare(strict_types=1);
 
 namespace AnassTouatiCoder\ReferrerTracker\Observer;
 
-use AnassTouatiCoder\ReferrerTracker\Helper\Data;
+use AnassTouatiCoder\ReferrerTracker\Model\Config;
 use Magento\Customer\Model\ResourceModel\CustomerFactory;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Session\SessionManagerInterface;
 
-class SaveRefererInCustomer implements ObserverInterface
+class SaveReferrerInCustomer implements ObserverInterface
 {
     /**
      * @var SessionManagerInterface
@@ -25,9 +25,9 @@ class SaveRefererInCustomer implements ObserverInterface
     private \Magento\Customer\Model\CustomerFactory $customerFactory;
     private CustomerFactory $customerResourceFactory;
     /**
-     * @var Data
+     * @var Config
      */
-    private Data $data;
+    private Config $data;
 
     /**
      * @param SessionManagerInterface $sessionManager
@@ -36,9 +36,8 @@ class SaveRefererInCustomer implements ObserverInterface
         SessionManagerInterface $sessionManager,
         \Magento\Customer\Model\CustomerFactory $customerFactory,
         CustomerFactory $customerResourceFactory,
-        Data $data
-    )
-    {
+        Config $data
+    ) {
         $this->sessionManager = $sessionManager;
         $this->customerFactory = $customerFactory;
         $this->customerResourceFactory = $customerResourceFactory;
@@ -52,15 +51,16 @@ class SaveRefererInCustomer implements ObserverInterface
     public function execute(Observer $observer)
     {
         if ($this->data->getIsRegistrationEnabled()) {
-            $refererUrl = $this->sessionManager->getData('atouati_external_host_referer', true);
-            if (!is_null($refererUrl)) {
+            $referrerUrl = $this->sessionManager->getData('atouati_external_host_referrer', true);
+            if ($referrerUrl !== null) {
                 /** @var \Magento\Customer\Api\Data\CustomerInterface $customerData */
                 $customerData = $observer->getCustomer();
                 $customer = $this->customerFactory->create()->load($customerData->getId());
-                $customerData->setCustomAttribute('atouati_external_origin',$refererUrl);
+                $customerData->setCustomAttribute('atouati_external_origin', $referrerUrl);
                 $customer->updateData($customerData);
                 $customerResource = $this->customerResourceFactory->create();
                 $customerResource->saveAttribute($customer, 'atouati_external_origin');
+                $this->data->removeCookie();
             }
         }
     }

@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace AnassTouatiCoder\ReferrerTracker\Controller\Index;
 
-use AnassTouatiCoder\ReferrerTracker\Helper\Data;
+use AnassTouatiCoder\ReferrerTracker\Model\Config;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
@@ -23,16 +23,16 @@ class Index extends  Action
     private SessionManagerInterface $sessionManager;
 
     /**
-     * @var Data
+     * @var Config
      */
-    private Data $helper;
+    private Config $helper;
 
     /**
      * @param Context $context
      * @param SessionManagerInterface $sessionManager
-     * @param Data $helper
+     * @param Config $helper
      */
-    public function __construct(Context $context, SessionManagerInterface $sessionManager, Data $helper)
+    public function __construct(Context $context, SessionManagerInterface $sessionManager, Config $helper)
     {
         $this->sessionManager = $sessionManager;
         $this->helper = $helper;
@@ -44,12 +44,12 @@ class Index extends  Action
      */
     public function execute()
     {
-        $originalReferer = $this->getRequest()->getParam('origin_referer');
+        $originalReferer = $this->getRequest()->getParam('origin_referrer');
         if ($originalReferer && $this->getRequest()->isXmlHttpRequest() &&
             $this->getRequest()->isPost() &&
-            $this->canTrackReferer()
+            $this->canTrackReferrer()
         ) {
-            $this->sessionManager->setData('atouati_external_host_referer', $originalReferer);
+            $this->sessionManager->setData('atouati_external_host_referrer', $originalReferer);
         }
     }
 
@@ -57,7 +57,7 @@ class Index extends  Action
      * Check BO configurations
      * @return bool
      */
-    private function canTrackReferer(): bool
+    private function canTrackReferrer(): bool
     {
         return $this->helper->getIsRegistrationEnabled() || $this->helper->getIsOrderEnabled();
     }
