@@ -2,11 +2,16 @@
 <config>
     <default>
         <atouati_data_config_domain>
-            <headers><![CDATA[Domain name]]></headers>
             <table_config><![CDATA[anasstouaticoder_trackreferrerorigin/restriction/exclude_external_domains]]></table_config>
-            <table_fields>
-                <domain>text</domain>
-            </table_fields>
+            <field_list>
+                <item1>
+                    <name>domain</name>
+                    <type>text</type>
+                    <label><![CDATA[Domain name]]></label>
+                    <required>1</required>
+                </item1>
+            </field_list>
+            <field_name>External domain to exclude</field_name>
         </atouati_data_config_domain>
     </default>
 </config>

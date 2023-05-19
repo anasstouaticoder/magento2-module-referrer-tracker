@@ -17,16 +17,4 @@ class ExcludeExternalDomainList extends FieldArray
      * @var string
      */
     protected $dataConfig = 'atouati_data_config_domain';
-    /**
-     * Prepare rendering the new field by adding all the needed columns
-     */
-    protected function _prepareToRender()
-    {
-        $this->addColumn('domain', [
-            'label' => __('Domain Name'),
-            'class' => 'required-entry'
-        ]);
-        $this->_addAfter = false;
-        $this->_addButtonLabel = __('Add New Domain Name');
-    }
 }
