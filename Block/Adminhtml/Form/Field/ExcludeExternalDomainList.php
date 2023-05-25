@@ -13,8 +13,4 @@ use AnassTouatiCoder\Base\Block\Adminhtml\Form\FieldArray;
 
 class ExcludeExternalDomainList extends FieldArray
 {
-    /**
-     * @var string
-     */
-    protected $dataConfig = 'atouati_data_config_domain';
 }

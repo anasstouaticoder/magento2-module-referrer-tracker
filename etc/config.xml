@@ -1,7 +1,8 @@
 <?xml version="1.0" ?>
-<config>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <default>
-        <atouati_data_config_domain>
+        <restriction_exclude_external_domains>
             <table_config><![CDATA[anasstouaticoder_trackreferrerorigin/restriction/exclude_external_domains]]></table_config>
             <field_list>
                 <item1>
@@ -12,6 +13,6 @@
                 </item1>
             </field_list>
             <field_name>External domain to exclude</field_name>
-        </atouati_data_config_domain>
+        </restriction_exclude_external_domains>
     </default>
 </config>

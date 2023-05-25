@@ -37,7 +37,7 @@
                 <field id="exclude_external_domains" translate="label,comment" sortOrder="300" showInDefault="1"
                        showInWebsite="1" showInStore="1">
                     <label>Exclude External Domains</label>
-                    <frontend_model>AnassTouatiCoder\ReferrerTracker\Block\Adminhtml\Form\Field\ExcludeExternalDomainList</frontend_model>
+                    <frontend_model>AnassTouatiCoder\Base\Block\Adminhtml\Form\FieldArray</frontend_model>
                     <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
                     <comment><![CDATA[
                     <p>To exclude unwanted external domains</p>
