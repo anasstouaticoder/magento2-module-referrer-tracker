@@ -2,7 +2,7 @@
     "name": "anasstouaticoder/magento2-module-referrer-tracker",
     "description": "Extension for tracking external Referrers coming from socials media and marketplaces",
     "type": "magento2-module",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +14,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.4.0||8.1.0||8.2",
+        "php": "^7.4 || ^8.0 || ^8.1 || ^8.2",
         "magento/framework": "103.0.*",
         "magento/module-sales": "103.0.*",
         "magento/module-customer": "103.0.*",
