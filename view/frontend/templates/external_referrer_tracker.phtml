@@ -24,7 +24,6 @@ $currentDomain = $baseUrl['host'];
         const [, referrerFromCookie] = keyValueCookie ? keyValueCookie.split('=') : [];
 
         if (document.referrer && document.referrer !== referrerFromCookie) {
-            console.log('we got referrer' , document.referrer);
             let currentDomain = '<?= /* @noEscape */ $currentDomain ?>',
                 referrerURL = (new URL(document.referrer));
             referrerDomain = referrerURL.hostname;
@@ -48,11 +47,10 @@ $currentDomain = $baseUrl['host'];
                             throw new Error("Error");
                         } else {
                             document.cookie = `atouati_referrer=${originReferrer}; SameSite=Strict`;
-                            console.log('referrer saved in localstorage' , document.referrer);
                         }
                     })
                     .catch(error => {
-                        console.log(error);
+                        console.error(error);
                     });
             }
         }
